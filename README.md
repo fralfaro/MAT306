@@ -1,7 +1,6 @@
 # MAT306 - Proyectos Estadísticos
 
 ![example workflow](https://github.com/fralfaro/MAT306/actions/workflows/documentation.yml/badge.svg)
-
 <a href="https://fralfaro.github.io/MAT306"><img alt="Link a la Documentación" src="https://img.shields.io/badge/📖 docs-link-brightgreen"></a>
 
 
