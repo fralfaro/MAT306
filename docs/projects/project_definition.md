@@ -1,73 +1,90 @@
+
+
+
 # Proyecto Final
 
 ## Introducción
 
-La finalidad de este proyecto es enfrentar a los estudiantes a
-problemas de Machine Learning con todas las etapas (típicas) que eso implica,
-basándose en cada uno de los módulos aprendidos a lo largo del curso, dando pie
-a la investigación y a la solución de problemas operacionales del mundo real.
+El propósito de este proyecto es introducir a los estudiantes en el análisis y predicción de **series de tiempo multivariadas**, trabajando con uno de los desafíos más emblemáticos de Kaggle: el M5 Forecasting - Accuracy. Este proyecto combina técnicas de preprocesamiento, análisis exploratorio, visualización, selección de variables y modelamiento de datos temporales.
 
 ## Descripción del Proyecto
 
-Bienvenido al año 2912, donde se necesitan tus habilidades de ciencia de datos
-para resolver un misterio cósmico. Hemos recibido una
-transmisión desde cuatro años luz de distancia y las cosas no pintan bien.
+El desafío M5 Forecasting se basa en datos reales de ventas minoristas de Walmart. El objetivo es **predecir la demanda diaria de productos** en distintos estados y tiendas durante un período determinado. Este tipo de pronóstico es fundamental para la planificación logística, el manejo de inventario y la toma de decisiones comerciales.
 
-La nave espacial Titanic fue un transatlántico de
-pasajeros interestelar lanzado hace un mes.
-Con casi 13.000 pasajeros a bordo, la nave emprendió
-su viaje inaugural transportando emigrantes de nuestro
-sistema solar a tres exoplanetas recientemente habitables
-que orbitan estrellas cercanas.
+Los estudiantes deberán construir modelos predictivos que logren estimar la demanda futura basándose en patrones históricos, variables categóricas y exógenas como precios o eventos especiales.
 
-Mientras rodeaba Alpha Centauri en ruta hacia su primer destino,
-el tórrido 55 Cancri E, la desprevenida nave espacial Titanic chocó con una
-anomalía del espacio-tiempo escondida dentro de una nube de polvo. Lamentablemente,
-tuvo un destino similar al de su homónimo de 1000 años antes. Aunque la nave permaneció
-intacta, ¡casi la mitad de los pasajeros fueron transportados a una dimensión alternativa!
-
-<img src="https://storage.googleapis.com/kaggle-media/competitions/Spaceship%20Titanic/joel-filipe-QwoNAhbmLLo-unsplash.jpg" width = "400" align="center"/>
+> Dataset oficial: [M5 Forecasting - Accuracy](https://www.kaggle.com/competitions/m5-forecasting-accuracy)
 
 ## Evaluación
 
-El proyecto final consta de dos parte:
+El proyecto consta de dos componentes principales:
 
-* **Parte Técnica**: Desarrollar una solución *end to end* del proyecto utilizando Jupyter Notebook.
-* **Presentación de Resultados**: Realizar una presentación de 10-20 minutos de sus hallazgos.
+* **Parte Técnica**: Desarrollo completo en Jupyter Notebook.
+* **Presentación Final**: Exposición de resultados con foco en visualización, interpretación y propuesta de solución.
+
 
 
 ### Parte Técnica
 
-La Parte técnica debe cumplir con la siguiente rúbrica de trabajo:
+Debe incluir las siguientes secciones:
 
-1. Definición del problema
-2. Estadística descriptiva
-3. Visualización descriptiva
-4. Preprocesamiento
-5. Selección de modelo
-    1. Por lo menos debe comparar cuatro modelos
-    2. Al menos tres de estos modelos tienen que tener hiperparámetros.
-    3. Realizar optimización de hiperparámetros.
-6. Métricas y análisis de resultados
-7. Visualizaciones del modelo
-8. Conclusiones
+1. **Definición del problema**
 
-> **Observación**: Tendrá una mejor puntación si también incorpora modelos de redes neuronales. Se deja un [tutorial de tensorflow](https://www.tensorflow.org/tutorials?hl=es-419) a modo de ejemplo.
+   * Importancia del forecasting en el retail.
+   * Objetivo del análisis y justificación del enfoque adoptado.
 
-La solución debe alojarse en su **Portafolio Personal** del curso (`.ipynb`).
+2. **Exploración de datos**
+
+   * Revisión de los archivos `sales_train_validation.csv`, `calendar.csv`, `sell_prices.csv`.
+   * Comprensión del significado de `d_1` a `d_1913`, y variables clave (`item_id`, `store_id`, `state_id`, etc.).
+
+3. **Visualización**
+
+   * Tendencias de ventas por producto, tienda o estado.
+   * Cambios de precio, patrones semanales, eventos especiales.
+   * Exploración de estacionalidades y anomalías.
+
+4. **Preprocesamiento**
+
+   * Transformación del dataset a formato largo (`melt`) para modelamiento.
+   * Incorporación de variables exógenas (precios, eventos).
+   * Agregación de features: medias móviles, lags, rolling statistics, etc.
+
+5. **Modelamiento**
+
+   * Se deben comparar al menos **cuatro modelos** diferentes:
+
+     * Modelos clásicos (ARIMA/SARIMA)
+     * Modelos con regresores (LinearRegression, XGBoost, LightGBM)
+     * Modelos multivariados como `Facebook Prophet` o `VAR`
+     * Opcional: redes neuronales (`LSTM`, `RNN`) si se justifican adecuadamente.
+   * Se recomienda usar validación tipo **backtesting** o **walk-forward**.
+
+6. **Evaluación**
+
+   * Métricas requeridas: RMSE, MAE, RMSSE.
+   * Visualización de predicciones vs. reales.
+   * Análisis de errores y comparación entre modelos.
+
+7. **Conclusiones**
+
+   * Reflexión sobre los resultados obtenidos.
+   * Recomendaciones para implementación o mejoras futuras.
+
+
 
 ### Presentación de Resultados
 
-* La presentación consta de 10-20 minutos.
-* Utilizar diapositivas con [BEAMER](https://www.dropbox.com/s/ol38qwzacgwzud7/Beamer.rar). Se deja el siguiente el siguiente [tutorial](https://www.youtube.com/watch?v=rx7wwtmFlD8&t=792s&ab_channel=Dr.TreforBazett) a modo de ejemplo.
+* La presentación consta de 10–20 minutos.
+* Utilizar diapositivas con [BEAMER](https://www.dropbox.com/s/ol38qwzacgwzud7/Beamer.rar). Se deja el siguiente [tutorial](https://www.youtube.com/watch?v=rx7wwtmFlD8&t=792s&ab_channel=Dr.TreforBazett) a modo de ejemplo.
 * La presentación debe alojarse en su **Portafolio Personal** del curso (`.pdf`).
-
 
 
 
 ## Información Importante
 
-* **Plazo**: 05 de Diciembre del 2024 (hasta las 11:59 PM)
-* Esto corresponde a un desafio de Kaggle ([link](https://www.kaggle.com/competitions/spaceship-titanic/)).
-* La información respecto a los datos, lo pueden encontrar en el siguiente [link](https://www.kaggle.com/competitions/spaceship-titanic/data).
-* A modo de inspiración, pueden ocupar algunos gráficos de otros participantes del desafío ([link](https://www.kaggle.com/competitions/spaceship-titanic/code)).
+* **Plazo**: 25 de Noviembre del 2025.
+* Esto corresponde a un desafío de Kaggle ([link](https://www.kaggle.com/competitions/m5-forecasting-accuracy/)).
+* El conjunto de datos puede descargarse desde la sección [Data](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data).
+* Como inspiración, pueden revisar notebooks destacados de Kaggle en la sección [Code](https://www.kaggle.com/competitions/m5-forecasting-accuracy/code).
+
