@@ -1089,6 +1089,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#groupby-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Groupby Filter
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2071,6 +2080,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#groupby-filter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Groupby Filter
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2705,7 +2723,7 @@ import numpy as np</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy for="cell-2">
@@ -2719,13 +2737,13 @@ import numpy as np</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cargar datos</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s1">'https://raw.githubusercontent.com/fralfaro/MAT306/main/docs/lectures/data_manipulation/data/player_info.csv'</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">'https://raw.githubusercontent.com/fralfaro/MAT281/main/docs/lectures/data_manipulation/data/player_info.csv'</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">","</span> <span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">'Decade'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'year_start'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">'2000'</span> <span class="k">if</span> <span class="n">x</span><span class="o">&gt;=</span><span class="mi">2000</span> <span class="k">else</span> <span class="s1">'1900'</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 <div class="clipboard-copy-txt" id="cell-2"># cargar datos
-path = 'https://raw.githubusercontent.com/fralfaro/MAT306/main/docs/lectures/data_manipulation/data/player_info.csv'
+path = 'https://raw.githubusercontent.com/fralfaro/MAT281/main/docs/lectures/data_manipulation/data/player_info.csv'
 df = pd.read_csv(path, sep="," ).dropna()
 df['Decade'] = df['year_start'].apply(lambda x: '2000' if x&gt;=2000 else '1900')
 df.head()</div>
@@ -2738,7 +2756,7 @@ df.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[ ]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -2868,11 +2886,11 @@ df.head()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrupar por 'Decade' y calcular la suma de la columna 'Open' en cada grupo</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrupar por posición, luego calcular promedio</span>
 <span class="n">agrupado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'position'</span><span class="p">)[</span><span class="s1">'weight'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">agrupado</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3"># Agrupar por 'Decade' y calcular la suma de la columna 'Open' en cada grupo
+<div class="clipboard-copy-txt" id="cell-3"># Agrupar por posición, luego calcular promedio
 agrupado = df.groupby('position')['weight'].mean()
 agrupado</div>
 </div>
@@ -2930,13 +2948,13 @@ Name: weight, dtype: float64</pre>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrupar por 'Year','Month' y calcular la suma de la columna 'Open' en cada grupo</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrupar por década y posición, luego calcular promedio</span>
 <span class="n">agrupado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Decade'</span><span class="p">,</span><span class="s1">'position'</span><span class="p">])[</span><span class="s1">'weight'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">agrupado</span>
+<span class="n">agrupado</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4"># Agrupar por 'Year','Month' y calcular la suma de la columna 'Open' en cada grupo
+<div class="clipboard-copy-txt" id="cell-4"># Agrupar por década y posición, luego calcular promedio
 agrupado = df.groupby(['Decade','position'])['weight'].mean()
-agrupado</div>
+agrupado.head()</div>
 </div>
 </div>
 </div>
@@ -2954,15 +2972,6 @@ agrupado</div>
         F           212.582933
         F-C         217.908475
         F-G         200.594444
-        G           182.689150
-        G-F         192.789062
-2000    C           256.057692
-        C-F         246.343750
-        F           230.135135
-        F-C         245.750000
-        F-G         217.080000
-        G           195.686192
-        G-F         210.550000
 Name: weight, dtype: float64</pre>
 </div>
 </div>
@@ -2999,13 +3008,13 @@ Name: weight, dtype: float64</pre>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrupar por 'Year','Month' y calcular la suma,promedio de la columna 'Open' en cada grupo</span>
-<span class="n">agrupado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Decade'</span><span class="p">,</span><span class="s1">'position'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">'weight'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'sum'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">]})</span>
-<span class="n">agrupado</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrupar por década y posición, luego calcular estadisticas básicas (peso)</span>
+<span class="n">agrupado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Decade'</span><span class="p">,</span><span class="s1">'position'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">'weight'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'min'</span><span class="p">,</span><span class="s1">'max'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">]})</span>
+<span class="n">agrupado</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5"># Agrupar por 'Year','Month' y calcular la suma,promedio de la columna 'Open' en cada grupo
-agrupado = df.groupby(['Decade','position']).agg({'weight': ['sum', 'mean']})
-agrupado</div>
+<div class="clipboard-copy-txt" id="cell-5"># Agrupar por década y posición, luego calcular estadisticas básicas (peso)
+agrupado = df.groupby(['Decade','position']).agg({'weight': ['min','max', 'mean']})
+agrupado.head()</div>
 </div>
 </div>
 </div>
@@ -3040,12 +3049,13 @@ agrupado</div>
 <tr>
 <th></th>
 <th></th>
-<th colspan="2" halign="left">weight</th>
+<th colspan="3" halign="left">weight</th>
 </tr>
 <tr>
 <th></th>
 <th></th>
-<th>sum</th>
+<th>min</th>
+<th>max</th>
 <th>mean</th>
 </tr>
 <tr>
@@ -3053,80 +3063,172 @@ agrupado</div>
 <th>position</th>
 <th></th>
 <th></th>
+<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<th rowspan="7" valign="top">1900</th>
+<th rowspan="5" valign="top">1900</th>
 <th>C</th>
-<td>71711.0</td>
+<td>190.0</td>
+<td>330.0</td>
 <td>237.453642</td>
 </tr>
 <tr>
 <th>C-F</th>
-<td>38453.0</td>
+<td>185.0</td>
+<td>270.0</td>
 <td>224.871345</td>
 </tr>
 <tr>
 <th>F</th>
-<td>176869.0</td>
+<td>165.0</td>
+<td>284.0</td>
 <td>212.582933</td>
 </tr>
 <tr>
 <th>F-C</th>
-<td>64283.0</td>
+<td>180.0</td>
+<td>290.0</td>
 <td>217.908475</td>
 </tr>
 <tr>
 <th>F-G</th>
-<td>36107.0</td>
+<td>165.0</td>
+<td>245.0</td>
 <td>200.594444</td>
 </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2DbdfRgq6S8X">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-6">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrupar por década y posición, luego calcular estadisticas básicas (peso,year_start)</span>
+<span class="n">agrupado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Decade'</span><span class="p">,</span><span class="s1">'position'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">'weight'</span><span class="p">:</span> <span class="p">[</span><span class="s1">'min'</span><span class="p">,</span><span class="s1">'max'</span><span class="p">,</span> <span class="s1">'mean'</span><span class="p">],</span> <span class="s1">'year_start'</span><span class="p">:[</span><span class="s1">'min'</span><span class="p">,</span><span class="s1">'max'</span><span class="p">]})</span>
+<span class="n">agrupado</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-6"># Agrupar por década y posición, luego calcular estadisticas básicas (peso,year_start)
+agrupado = df.groupby(['Decade','position']).agg({'weight': ['min','max', 'mean'], 'year_start':['min','max']})
+agrupado.head()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
 <tr>
-<th>G</th>
-<td>186891.0</td>
-<td>182.689150</td>
+<th></th>
+<th></th>
+<th colspan="3" halign="left">weight</th>
+<th colspan="2" halign="left">year_start</th>
 </tr>
 <tr>
-<th>G-F</th>
-<td>49354.0</td>
-<td>192.789062</td>
+<th></th>
+<th></th>
+<th>min</th>
+<th>max</th>
+<th>mean</th>
+<th>min</th>
+<th>max</th>
 </tr>
 <tr>
-<th rowspan="7" valign="top">2000</th>
+<th>Decade</th>
+<th>position</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="5" valign="top">1900</th>
 <th>C</th>
-<td>26630.0</td>
-<td>256.057692</td>
+<td>190.0</td>
+<td>330.0</td>
+<td>237.453642</td>
+<td>1947</td>
+<td>1999</td>
 </tr>
 <tr>
 <th>C-F</th>
-<td>7883.0</td>
-<td>246.343750</td>
+<td>185.0</td>
+<td>270.0</td>
+<td>224.871345</td>
+<td>1947</td>
+<td>1998</td>
 </tr>
 <tr>
 <th>F</th>
-<td>85150.0</td>
-<td>230.135135</td>
+<td>165.0</td>
+<td>284.0</td>
+<td>212.582933</td>
+<td>1947</td>
+<td>1999</td>
 </tr>
 <tr>
 <th>F-C</th>
-<td>15728.0</td>
-<td>245.750000</td>
+<td>180.0</td>
+<td>290.0</td>
+<td>217.908475</td>
+<td>1947</td>
+<td>1999</td>
 </tr>
 <tr>
 <th>F-G</th>
-<td>5427.0</td>
-<td>217.080000</td>
-</tr>
-<tr>
-<th>G</th>
-<td>93538.0</td>
-<td>195.686192</td>
-</tr>
-<tr>
-<th>G-F</th>
-<td>16844.0</td>
-<td>210.550000</td>
+<td>165.0</td>
+<td>245.0</td>
+<td>200.594444</td>
+<td>1947</td>
+<td>1999</td>
 </tr>
 </tbody>
 </table>
@@ -3153,10 +3255,10 @@ agrupado</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-6">
+<clipboard-copy for="cell-7">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3166,25 +3268,27 @@ agrupado</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Definimos una función que calcula el promedio armónico</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Función para calcular el promedio armónico</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">promedio_armónico</span><span class="p">(</span><span class="n">datos</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">datos</span><span class="p">)</span>
     <span class="n">suma_recíprocos</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">datos</span><span class="p">)</span>
     <span class="n">promedio_armónico</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="n">suma_recíprocos</span>
     <span class="k">return</span> <span class="n">promedio_armónico</span>
 
-<span class="c1"># Aplicamos la función</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Decade'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">])[</span><span class="s1">'weight'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">promedio_armónico</span><span class="p">)</span>
+<span class="c1"># Agrupar por década y posición, luego calcular promedio armónico</span>
+<span class="n">agrupado</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Decade'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">])[</span><span class="s1">'weight'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">promedio_armónico</span><span class="p">)</span>
+<span class="n">agrupado</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6"># Definimos una función que calcula el promedio armónico
+<div class="clipboard-copy-txt" id="cell-7"># Función para calcular el promedio armónico
 def promedio_armónico(datos):
     n = len(datos)
     suma_recíprocos = sum(1 / x for x in datos)
     promedio_armónico = n / suma_recíprocos
     return promedio_armónico
 
-# Aplicamos la función
-df.groupby(['Decade', 'position'])['weight'].apply(promedio_armónico)</div>
+# Agrupar por década y posición, luego calcular promedio armónico
+agrupado = df.groupby(['Decade', 'position'])['weight'].apply(promedio_armónico)
+agrupado.head()</div>
 </div>
 </div>
 </div>
@@ -3194,7 +3298,7 @@ df.groupby(['Decade', 'position'])['weight'].apply(promedio_armónico)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>Decade  position
 1900    C           235.811208
@@ -3202,15 +3306,6 @@ df.groupby(['Decade', 'position'])['weight'].apply(promedio_armónico)</div>
         F           211.205181
         F-C         216.785001
         F-G         199.669744
-        G           181.746894
-        G-F         191.847770
-2000    C           254.688414
-        C-F         245.646696
-        F           228.989635
-        F-C         244.951294
-        F-G         216.310153
-        G           194.579990
-        G-F         209.851256
 Name: weight, dtype: float64</pre>
 </div>
 </div>
@@ -3234,10 +3329,10 @@ Name: weight, dtype: float64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-7">
+<clipboard-copy for="cell-8">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3247,10 +3342,12 @@ Name: weight, dtype: float64</pre>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'mean_weight'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Decade'</span><span class="p">,</span><span class="s1">'position'</span><span class="p">])[</span><span class="s1">'weight'</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">'mean'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrega una columna con el promedio de peso por década y posición</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">'mean_weight'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Decade'</span><span class="p">,</span><span class="s1">'position'</span><span class="p">])[</span><span class="s1">'weight'</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">'mean'</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">df['mean_weight'] = df.groupby(['Decade','position'])['weight'].transform('mean')
+<div class="clipboard-copy-txt" id="cell-8"># Agrega una columna con el promedio de peso por década y posición
+df['mean_weight'] = df.groupby(['Decade','position'])['weight'].transform('mean')
 df.head()</div>
 </div>
 </div>
@@ -3261,7 +3358,7 @@ df.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -3368,13 +3465,177 @@ df.head()</div>
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=z1ZaVrXt7SwQ">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="groupby-filter">Groupby Filter<a class="anchor-link" href="#groupby-filter">¶</a></h3><p>En <strong>pandas</strong>, <code>filter()</code> sirve para <strong>conservar o descartar filas completas</strong> según una <strong>condición a nivel de grupo</strong>. La función recibe cada grupo (DataFrame o Serie, según cómo agrupes) y debe <strong>devolver <code>True</code> o <code>False</code></strong>.
+Si es <code>True</code>, <strong>se mantienen todas las filas</strong> de ese grupo; si es <code>False</code>, <strong>se eliminan</strong>.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=B3NGjXQI7SRj">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-9">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Agrupar por posición usando todo el DataFrame</span>
+<span class="n">grupo</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'position'</span><span class="p">)</span>
+
+<span class="c1"># Filtrar posiciones con peso promedio mayor a 220</span>
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">grupo</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">'weight'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">220</span><span class="p">)</span>
+
+<span class="c1"># Ahora 'resultado' tiene todas las columnas del DataFrame</span>
+<span class="n">resultado</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-9"># Agrupar por posición usando todo el DataFrame
+grupo = df.groupby('position')
+
+# Filtrar posiciones con peso promedio mayor a 220
+resultado = grupo.filter(lambda x: x['weight'].mean() &gt; 220)
+
+# Ahora 'resultado' tiene todas las columnas del DataFrame
+resultado.head()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>name</th>
+<th>year_start</th>
+<th>year_end</th>
+<th>position</th>
+<th>height</th>
+<th>weight</th>
+<th>birth_date</th>
+<th>college</th>
+<th>Decade</th>
+<th>mean_weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>2</th>
+<td>Zaid Abdul-Aziz</td>
+<td>1969</td>
+<td>1978</td>
+<td>C-F</td>
+<td>6-9</td>
+<td>235.0</td>
+<td>April 7, 1946</td>
+<td>Iowa State University</td>
+<td>1900</td>
+<td>224.871345</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Kareem Abdul-Jabbar</td>
+<td>1970</td>
+<td>1989</td>
+<td>C</td>
+<td>7-2</td>
+<td>225.0</td>
+<td>April 16, 1947</td>
+<td>University of California, Los Angeles</td>
+<td>1900</td>
+<td>237.453642</td>
+</tr>
+<tr>
+<th>13</th>
+<td>Mark Acres</td>
+<td>1988</td>
+<td>1993</td>
+<td>F-C</td>
+<td>6-11</td>
+<td>220.0</td>
+<td>November 15, 1962</td>
+<td>Oral Roberts University</td>
+<td>1900</td>
+<td>217.908475</td>
+</tr>
+<tr>
+<th>16</th>
+<td>Alvan Adams</td>
+<td>1976</td>
+<td>1988</td>
+<td>C-F</td>
+<td>6-9</td>
+<td>210.0</td>
+<td>July 19, 1954</td>
+<td>University of Oklahoma</td>
+<td>1900</td>
+<td>224.871345</td>
+</tr>
+<tr>
+<th>22</th>
+<td>Steven Adams</td>
+<td>2014</td>
+<td>2018</td>
+<td>C</td>
+<td>7-0</td>
+<td>255.0</td>
+<td>July 20, 1993</td>
+<td>University of Pittsburgh</td>
+<td>2000</td>
+<td>256.057692</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a2bfa939">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="concat">Concat<a class="anchor-link" href="#concat">¶</a></h2><p>La función <code>concat()</code> realiza todo el trabajo pesado de realizar operaciones de concatenación a lo largo de un eje mientras realiza la lógica de conjunto opcional (unión o intersección) de los índices (si los hay) en los otros ejes. Tenga en cuenta que digo "si hay alguno" porque solo hay un único eje posible de concatenación para Series.</p>
+<h2 id="concat">Concat<a class="anchor-link" href="#concat">¶</a></h2><p><img align="center" alt="No description has been provided for this image" src="https://miro.medium.com/v2/resize:fit:1400/0*Xhaw5NqAkkqRPxUF.png" width="500"/></p>
+<p>La función <code>concat()</code> realiza todo el trabajo pesado de realizar operaciones de concatenación a lo largo de un eje mientras realiza la lógica de conjunto opcional (unión o intersección) de los índices (si los hay) en los otros ejes. Tenga en cuenta que digo "si hay alguno" porque solo hay un único eje posible de concatenación para Series.</p>
 </div>
 </div>
 </div>
@@ -3384,10 +3645,10 @@ df.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-8">
+<clipboard-copy for="cell-10">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3398,12 +3659,12 @@ df.head()</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cargar datos</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s1">'data/player_info.csv'</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">'https://raw.githubusercontent.com/fralfaro/MAT306/main/docs/lectures/data_manipulation/data/player_info.csv'</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">","</span> <span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8"># cargar datos
-path = 'data/player_info.csv'
+<div class="clipboard-copy-txt" id="cell-10"># cargar datos
+path = 'https://raw.githubusercontent.com/fralfaro/MAT306/main/docs/lectures/data_manipulation/data/player_info.csv'
 df = pd.read_csv(path, sep="," ).dropna()
 df.head()</div>
 </div>
@@ -3415,7 +3676,7 @@ df.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -3515,10 +3776,10 @@ df.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-9">
+<clipboard-copy for="cell-11">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3532,7 +3793,7 @@ df.head()</div>
 <span class="n">df_concat1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">'year_start'</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">2000</span><span class="p">]</span>
 <span class="n">df_concat1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9"># crear datos
+<div class="clipboard-copy-txt" id="cell-11"># crear datos
 df_concat1 = df.loc[lambda x: x['year_start']&lt;2000]
 df_concat1.head()</div>
 </div>
@@ -3544,7 +3805,7 @@ df_concat1.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -3644,10 +3905,10 @@ df_concat1.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-10">
+<clipboard-copy for="cell-12">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3661,7 +3922,7 @@ df_concat1.head()</div>
 <span class="n">df_concat2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s1">'year_start'</span><span class="p">]</span><span class="o">&gt;=</span><span class="mi">2000</span><span class="p">]</span>
 <span class="n">df_concat2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10"># crear datos
+<div class="clipboard-copy-txt" id="cell-12"># crear datos
 df_concat2 = df.loc[lambda x: x['year_start']&gt;=2000]
 df_concat2.head()</div>
 </div>
@@ -3673,7 +3934,7 @@ df_concat2.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -3784,10 +4045,10 @@ df_concat2.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-11">
+<clipboard-copy for="cell-13">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -3803,7 +4064,7 @@ df_concat2.head()</div>
 <span class="c1"># mostrar resultados</span>
 <span class="n">result</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11"># concatenar mismas columnas
+<div class="clipboard-copy-txt" id="cell-13"># concatenar mismas columnas
 result = pd.concat([df_concat1,df_concat2])
 
 # mostrar resultados
@@ -3817,7 +4078,7 @@ result</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[11]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -3995,10 +4256,10 @@ result</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-12">
+<clipboard-copy for="cell-14">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4008,7 +4269,7 @@ result</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cambiar nombre </span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cambiar nombre</span>
 <span class="n">df_concat2</span> <span class="o">=</span> <span class="n">df_concat2</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'birth_date'</span><span class="p">:</span><span class="s1">'birth'</span><span class="p">})</span>
 
 <span class="c1"># concatenar mismas columnas</span>
@@ -4017,7 +4278,7 @@ result</div>
 <span class="c1"># mostrar resultados</span>
 <span class="n">result</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-12"># cambiar nombre 
+<div class="clipboard-copy-txt" id="cell-14"># cambiar nombre
 df_concat2 = df_concat2.rename(columns = {'birth_date':'birth'})
 
 # concatenar mismas columnas
@@ -4034,7 +4295,7 @@ result</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -4214,8 +4475,9 @@ result</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="merge">Merge<a class="anchor-link" href="#merge">¶</a></h2><p>La función <code>merge()</code> se usa para combinar dos (o más) tablas sobre valores de columnas comunes (keys).</p>
-<p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_04.png" width="500"/></p>
+<h2 id="merge">Merge<a class="anchor-link" href="#merge">¶</a></h2><p>La función <code>merge()</code> en <strong>pandas</strong> se utiliza para <strong>combinar dos (o más) DataFrames</strong> en base a una o varias <strong>columnas clave</strong> (keys). Es equivalente a realizar un <strong>join en SQL</strong>.</p>
+<p>Este método permite enriquecer un conjunto de datos incorporando información que está en otra tabla, siempre que exista al menos una columna con valores en común.</p>
+<p><img align="center" alt="No description has been provided for this image" src="https://miro.medium.com/v2/0*-7x_-C-W1UUbF65N.png" width="500"/></p>
 </div>
 </div>
 </div>
@@ -4225,10 +4487,10 @@ result</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-13">
+<clipboard-copy for="cell-15">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -4239,12 +4501,12 @@ result</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cargar datos</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s1">'data/player_info.csv'</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">'https://raw.githubusercontent.com/fralfaro/MAT306/main/docs/lectures/data_manipulation/data/player_info.csv'</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">","</span> <span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-13"># cargar datos
-path = 'data/player_info.csv'
+<div class="clipboard-copy-txt" id="cell-15"># cargar datos
+path = 'https://raw.githubusercontent.com/fralfaro/MAT306/main/docs/lectures/data_manipulation/data/player_info.csv'
 df = pd.read_csv(path, sep="," ).dropna()
 df.head()</div>
 </div>
@@ -4256,7 +4518,7 @@ df.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[13]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -4358,231 +4620,12 @@ df.head()</div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Por un columna</strong></p>
+<p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_04.png" width="500"/></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2c6ae0fd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-14">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos</span>
-<span class="n">cols_merge1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">]</span>
-<span class="n">df_merge1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge1</span><span class="p">]</span>
-<span class="n">df_merge1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-14"># crear datos
-cols_merge1 = ['name', 'year_start', 'year_end', 'position']
-df_merge1 = df[cols_merge1]
-df_merge1.head()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>name</th>
-<th>year_start</th>
-<th>year_end</th>
-<th>position</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>2</th>
-<td>Zaid Abdul-Aziz</td>
-<td>1969</td>
-<td>1978</td>
-<td>C-F</td>
-</tr>
-<tr>
-<th>3</th>
-<td>Kareem Abdul-Jabbar</td>
-<td>1970</td>
-<td>1989</td>
-<td>C</td>
-</tr>
-<tr>
-<th>4</th>
-<td>Mahmoud Abdul-Rauf</td>
-<td>1991</td>
-<td>2001</td>
-<td>G</td>
-</tr>
-<tr>
-<th>5</th>
-<td>Tariq Abdul-Wahad</td>
-<td>1998</td>
-<td>2003</td>
-<td>F</td>
-</tr>
-<tr>
-<th>6</th>
-<td>Shareef Abdur-Rahim</td>
-<td>1997</td>
-<td>2008</td>
-<td>F</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2bcc8cc9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-15">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos</span>
-<span class="n">cols_merge2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'height'</span><span class="p">,</span> <span class="s1">'weight'</span><span class="p">,</span><span class="s1">'birth_date'</span><span class="p">,</span> <span class="s1">'college'</span><span class="p">]</span>
-<span class="n">df_merge2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge2</span><span class="p">]</span>
-<span class="n">df_merge2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-15"># crear datos
-cols_merge2 = ['name', 'height', 'weight','birth_date', 'college']
-df_merge2 = df[cols_merge2]
-df_merge2.head()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[15]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>name</th>
-<th>height</th>
-<th>weight</th>
-<th>birth_date</th>
-<th>college</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>2</th>
-<td>Zaid Abdul-Aziz</td>
-<td>6-9</td>
-<td>235.0</td>
-<td>April 7, 1946</td>
-<td>Iowa State University</td>
-</tr>
-<tr>
-<th>3</th>
-<td>Kareem Abdul-Jabbar</td>
-<td>7-2</td>
-<td>225.0</td>
-<td>April 16, 1947</td>
-<td>University of California, Los Angeles</td>
-</tr>
-<tr>
-<th>4</th>
-<td>Mahmoud Abdul-Rauf</td>
-<td>6-1</td>
-<td>162.0</td>
-<td>March 9, 1969</td>
-<td>Louisiana State University</td>
-</tr>
-<tr>
-<th>5</th>
-<td>Tariq Abdul-Wahad</td>
-<td>6-6</td>
-<td>223.0</td>
-<td>November 3, 1974</td>
-<td>San Jose State University</td>
-</tr>
-<tr>
-<th>6</th>
-<td>Shareef Abdur-Rahim</td>
-<td>6-9</td>
-<td>225.0</td>
-<td>December 11, 1976</td>
-<td>University of California</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3ab1aada">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2c6ae0fd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -4600,11 +4643,50 @@ df_merge2.head()</div>
 </div>
 </clipboard-copy>
 </div>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos (df1)</span>
+<span class="n">cols_merge1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">]</span>
+<span class="n">df_merge1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge1</span><span class="p">]</span>
+
+<span class="c1"># crear datos (df2)</span>
+<span class="n">cols_merge2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'height'</span><span class="p">,</span> <span class="s1">'weight'</span><span class="p">,</span><span class="s1">'birth_date'</span><span class="p">,</span> <span class="s1">'college'</span><span class="p">]</span>
+<span class="n">df_merge2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge2</span><span class="p">]</span>
+</pre></div>
+<div class="clipboard-copy-txt" id="cell-16"># crear datos (df1)
+cols_merge1 = ['name', 'year_start', 'year_end', 'position']
+df_merge1 = df[cols_merge1]
+
+# crear datos (df2)
+cols_merge2 = ['name', 'height', 'weight','birth_date', 'college']
+df_merge2 = df[cols_merge2]</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3ab1aada">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="CodeMirror cm-s-jupyter">
+<div class="zeroclipboard-container">
+<clipboard-copy for="cell-17">
+<div>
+<span class="notice" hidden="">Copied!</span>
+<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
+<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+</clipboard-copy>
+</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># merge por una columna</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge1</span><span class="p">,</span> <span class="n">df_merge2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">'name'</span><span class="p">)</span>
 <span class="n">result</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-16"># merge por una columna
+<div class="clipboard-copy-txt" id="cell-17"># merge por una columna
 result = pd.merge(df_merge1, df_merge2, on='name')
 result.head()</div>
 </div>
@@ -4616,7 +4698,7 @@ result.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -4718,118 +4800,12 @@ result.head()</div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p><strong>Por Varias columnas</strong></p>
+<p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_05.png" width="500"/></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=81c2fad5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-17">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos</span>
-<span class="n">cols_merge1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">]</span>
-<span class="n">df_merge1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge1</span><span class="p">]</span>
-<span class="n">df_merge1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-17"># crear datos
-cols_merge1 = ['name', 'year_start', 'year_end', 'position']
-df_merge1 = df[cols_merge1]
-df_merge1.head()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>name</th>
-<th>year_start</th>
-<th>year_end</th>
-<th>position</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>2</th>
-<td>Zaid Abdul-Aziz</td>
-<td>1969</td>
-<td>1978</td>
-<td>C-F</td>
-</tr>
-<tr>
-<th>3</th>
-<td>Kareem Abdul-Jabbar</td>
-<td>1970</td>
-<td>1989</td>
-<td>C</td>
-</tr>
-<tr>
-<th>4</th>
-<td>Mahmoud Abdul-Rauf</td>
-<td>1991</td>
-<td>2001</td>
-<td>G</td>
-</tr>
-<tr>
-<th>5</th>
-<td>Tariq Abdul-Wahad</td>
-<td>1998</td>
-<td>2003</td>
-<td>F</td>
-</tr>
-<tr>
-<th>6</th>
-<td>Shareef Abdur-Rahim</td>
-<td>1997</td>
-<td>2008</td>
-<td>F</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5522b687">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=81c2fad5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -4847,107 +4823,21 @@ df_merge1.head()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos (df1)</span>
+<span class="n">cols_merge1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">]</span>
+<span class="n">df_merge1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge1</span><span class="p">]</span>
+
+<span class="c1"># crear datos (df2)</span>
 <span class="n">cols_merge2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'height'</span><span class="p">,</span> <span class="s1">'weight'</span><span class="p">,</span><span class="s1">'birth_date'</span><span class="p">,</span> <span class="s1">'college'</span><span class="p">]</span>
 <span class="n">df_merge2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge2</span><span class="p">]</span>
-<span class="n">df_merge2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-18"># crear datos
+<div class="clipboard-copy-txt" id="cell-18"># crear datos (df1)
+cols_merge1 = ['name', 'year_start', 'year_end', 'position']
+df_merge1 = df[cols_merge1]
+
+# crear datos (df2)
 cols_merge2 = ['name', 'year_start', 'year_end', 'height', 'weight','birth_date', 'college']
-df_merge2 = df[cols_merge2]
-df_merge2.head()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>name</th>
-<th>year_start</th>
-<th>year_end</th>
-<th>height</th>
-<th>weight</th>
-<th>birth_date</th>
-<th>college</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>2</th>
-<td>Zaid Abdul-Aziz</td>
-<td>1969</td>
-<td>1978</td>
-<td>6-9</td>
-<td>235.0</td>
-<td>April 7, 1946</td>
-<td>Iowa State University</td>
-</tr>
-<tr>
-<th>3</th>
-<td>Kareem Abdul-Jabbar</td>
-<td>1970</td>
-<td>1989</td>
-<td>7-2</td>
-<td>225.0</td>
-<td>April 16, 1947</td>
-<td>University of California, Los Angeles</td>
-</tr>
-<tr>
-<th>4</th>
-<td>Mahmoud Abdul-Rauf</td>
-<td>1991</td>
-<td>2001</td>
-<td>6-1</td>
-<td>162.0</td>
-<td>March 9, 1969</td>
-<td>Louisiana State University</td>
-</tr>
-<tr>
-<th>5</th>
-<td>Tariq Abdul-Wahad</td>
-<td>1998</td>
-<td>2003</td>
-<td>6-6</td>
-<td>223.0</td>
-<td>November 3, 1974</td>
-<td>San Jose State University</td>
-</tr>
-<tr>
-<th>6</th>
-<td>Shareef Abdur-Rahim</td>
-<td>1997</td>
-<td>2008</td>
-<td>6-9</td>
-<td>225.0</td>
-<td>December 11, 1976</td>
-<td>University of California</td>
-</tr>
-</tbody>
-</table>
-</div>
+df_merge2 = df[cols_merge2]</div>
 </div>
 </div>
 </div>
@@ -5089,14 +4979,7 @@ result.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="tipos-de-merge">Tipos de merge<a class="anchor-link" href="#tipos-de-merge">¶</a></h3><p>La opción <em>how</em> especificica el tipo de cruce que se realizará.</p>
-<ul>
-<li><strong>left</strong>: usa las llaves solo de la tabla izquierda</li>
-<li><strong>right</strong>: usa las llaves solo de la tabla derecha</li>
-<li><strong>outer</strong>: usa las llaves de la unión de  ambas tablas.</li>
-<li><strong>inner</strong>: usa las llaves de la intersección de  ambas tablas.</li>
-</ul>
-<p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/joins2.png" width="500"/></p>
+<h3 id="tipos-de-merge">Tipos de merge<a class="anchor-link" href="#tipos-de-merge">¶</a></h3>
 </div>
 </div>
 </div>
@@ -5107,10 +4990,22 @@ result.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>La opción <em>how</em> especificica el tipo de cruce que se realizará.</p>
+<ul>
+<li><strong>left</strong>: usa las llaves solo de la tabla izquierda</li>
+</ul>
 <p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_05.png" width="600"/></p>
-<p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_06.png" width="600"/></p>
-<p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_07.png" width="600"/></p>
-<p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_08.png" width="600"/></p>
+<ul>
+<li><p><strong>right</strong>: usa las llaves solo de la tabla derecha
+<img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_06.png" width="600"/></p>
+</li>
+<li><p><strong>inner</strong>: usa las llaves de la intersección de  ambas tablas.
+<img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_08.png" width="600"/></p>
+</li>
+<li><p><strong>outer</strong>: usa las llaves de la unión de  ambas tablas.
+<img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_07.png" width="600"/></p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -5133,14 +5028,14 @@ result.head()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># tipos de merge</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Tipos de merge</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">]</span>
 <span class="n">merge_left</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge1</span><span class="p">,</span> <span class="n">df_merge2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span> <span class="s1">'left'</span><span class="p">)</span>
 <span class="n">merge_rigth</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge1</span><span class="p">,</span> <span class="n">df_merge2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span> <span class="s1">'right'</span><span class="p">)</span>
 <span class="n">merge_inner</span>  <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge1</span><span class="p">,</span> <span class="n">df_merge2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span> <span class="s1">'inner'</span><span class="p">)</span>
 <span class="n">merge_outer</span>   <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge1</span><span class="p">,</span> <span class="n">df_merge2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="n">cols</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span> <span class="s1">'outer'</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-20"># tipos de merge
+<div class="clipboard-copy-txt" id="cell-20"># Tipos de merge
 cols = ['name', 'year_start', 'year_end']
 merge_left = pd.merge(df_merge1, df_merge2, on=cols, how= 'left')
 merge_rigth  = pd.merge(df_merge1, df_merge2, on=cols, how= 'right')
@@ -5159,11 +5054,12 @@ merge_outer   = pd.merge(df_merge1, df_merge2, on=cols, how= 'outer')</div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="problemas-de-llaves-duplicadas">Problemas de llaves duplicadas<a class="anchor-link" href="#problemas-de-llaves-duplicadas">¶</a></h3><p>Cuando se quiere realizar el cruce de dos tablas, pero an ambas tablas existe una columna (key) con el mismo nombre, para diferenciar la información entre la columna de una tabla y otra, pandas devulve el nombre de la columna con un guión bajo x (key_x) y otra con un guión bajo y (key_y)</p>
+<p><img align="center" alt="No description has been provided for this image" src="https://raw.githubusercontent.com/fralfaro/MAT281_2022/main/docs/lectures/data_manipulation/data_manipulation/images/merge_09.png" width="450"/></p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5728aad9-0acd-4039-9d7f-5db1a3db8dc4">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=13e5a679">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -5181,30 +5077,28 @@ merge_outer   = pd.merge(df_merge1, df_merge2, on=cols, how= 'outer')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos (df1)</span>
+<span class="n">cols_merge1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'position'</span> <span class="p">]</span>
+<span class="n">df_merge1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge1</span><span class="p">]</span>
+
+<span class="c1"># crear datos (df2)</span>
+<span class="n">cols_merge2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'height'</span> <span class="p">]</span>
+<span class="n">df_merge2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge2</span><span class="p">]</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-21">df.columns</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>Index(['name', 'year_start', 'year_end', 'position', 'height', 'weight',
-       'birth_date', 'college'],
-      dtype='object')</pre>
+<div class="clipboard-copy-txt" id="cell-21"># crear datos (df1)
+cols_merge1 = ['name', 'year_start', 'year_end', 'position' ]
+df_merge1 = df[cols_merge1]
+
+# crear datos (df2)
+cols_merge2 = ['name', 'year_start', 'year_end', 'height' ]
+df_merge2 = df[cols_merge2]</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=13e5a679">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0355e259">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -5222,225 +5116,11 @@ merge_outer   = pd.merge(df_merge1, df_merge2, on=cols, how= 'outer')</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos</span>
-<span class="n">cols_merge1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'position'</span> <span class="p">]</span>
-<span class="n">df_merge1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge1</span><span class="p">]</span>
-<span class="n">df_merge1</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-22"># crear datos
-cols_merge1 = ['name', 'year_start', 'year_end', 'position' ]
-df_merge1 = df[cols_merge1]
-df_merge1.head()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>name</th>
-<th>year_start</th>
-<th>year_end</th>
-<th>position</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>2</th>
-<td>Zaid Abdul-Aziz</td>
-<td>1969</td>
-<td>1978</td>
-<td>C-F</td>
-</tr>
-<tr>
-<th>3</th>
-<td>Kareem Abdul-Jabbar</td>
-<td>1970</td>
-<td>1989</td>
-<td>C</td>
-</tr>
-<tr>
-<th>4</th>
-<td>Mahmoud Abdul-Rauf</td>
-<td>1991</td>
-<td>2001</td>
-<td>G</td>
-</tr>
-<tr>
-<th>5</th>
-<td>Tariq Abdul-Wahad</td>
-<td>1998</td>
-<td>2003</td>
-<td>F</td>
-</tr>
-<tr>
-<th>6</th>
-<td>Shareef Abdur-Rahim</td>
-<td>1997</td>
-<td>2008</td>
-<td>F</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e98402f1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-23">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># crear datos</span>
-<span class="n">cols_merge2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">,</span> <span class="s1">'height'</span> <span class="p">]</span>
-<span class="n">df_merge2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_merge2</span><span class="p">]</span>
-<span class="n">df_merge2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-23"># crear datos
-cols_merge2 = ['name', 'year_start', 'year_end', 'height' ]
-df_merge2 = df[cols_merge2]
-df_merge2.head()</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>name</th>
-<th>year_start</th>
-<th>year_end</th>
-<th>height</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>2</th>
-<td>Zaid Abdul-Aziz</td>
-<td>1969</td>
-<td>1978</td>
-<td>6-9</td>
-</tr>
-<tr>
-<th>3</th>
-<td>Kareem Abdul-Jabbar</td>
-<td>1970</td>
-<td>1989</td>
-<td>7-2</td>
-</tr>
-<tr>
-<th>4</th>
-<td>Mahmoud Abdul-Rauf</td>
-<td>1991</td>
-<td>2001</td>
-<td>6-1</td>
-</tr>
-<tr>
-<th>5</th>
-<td>Tariq Abdul-Wahad</td>
-<td>1998</td>
-<td>2003</td>
-<td>6-6</td>
-</tr>
-<tr>
-<th>6</th>
-<td>Shareef Abdur-Rahim</td>
-<td>1997</td>
-<td>2008</td>
-<td>6-9</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0355e259">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy for="cell-24">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># merge llaves duplicadas</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df_merge1</span><span class="p">,</span> <span class="n">df_merge2</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">])</span>
 <span class="n">result</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-24"># merge llaves duplicadas
+<div class="clipboard-copy-txt" id="cell-22"># merge llaves duplicadas
 result = pd.merge(df_merge1, df_merge2, on=['name', 'year_start'])
 result.head()</div>
 </div>
@@ -5452,7 +5132,7 @@ result.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -5663,7 +5343,8 @@ result.head()</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="formato-long-a-wide">Formato long a wide<a class="anchor-link" href="#formato-long-a-wide">¶</a></h3><p>El pivoteo de una tabla corresponde al paso de una tabla desde el formato <strong>long</strong> al formato <strong>wide</strong>. Típicamente esto se realiza para poder comparar los valores que se obtienen para algún registro en particular, o para utilizar algunas herramientas de visualización básica que requieren dicho formato.</p>
+<h3 id="formato-long-a-wide">Formato long a wide<a class="anchor-link" href="#formato-long-a-wide">¶</a></h3><img align="center" alt="No description has been provided for this image" src="https://pandas.pydata.org/docs/_images/reshaping_pivot.png" width="500"/>
+<p>El pivoteo de una tabla corresponde al paso de una tabla desde el formato <strong>long</strong> al formato <strong>wide</strong>. Típicamente esto se realiza para poder comparar los valores que se obtienen para algún registro en particular, o para utilizar algunas herramientas de visualización básica que requieren dicho formato.</p>
 <p>En Pandas se utiliza los comandos <code>pivot</code> y <code>pivot_table</code>. Formato long a wide</p>
 <p>El pivoteo de una tabla corresponde al paso de una tabla desde el formato <strong>long</strong> al formato <strong>wide</strong>. Típicamente esto se realiza para poder comparar los valores que se obtienen para algún registro en particular, o para utilizar algunas herramientas de visualización básica que requieren dicho formato.</p>
 <p>En Pandas se utiliza los comandos <code>pivot</code> y <code>pivot_table</code>.</p>
@@ -5676,10 +5357,10 @@ result.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-25">
+<clipboard-copy for="cell-23">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -5690,13 +5371,13 @@ result.head()</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># cargar datos</span>
-<span class="n">path</span> <span class="o">=</span> <span class="s1">'data/player_info.csv'</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">'https://raw.githubusercontent.com/fralfaro/MAT306/main/docs/lectures/data_manipulation/data/player_info.csv'</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">","</span> <span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">'Decade'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'year_start'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">'2000'</span> <span class="k">if</span> <span class="n">x</span><span class="o">&gt;=</span><span class="mi">2000</span> <span class="k">else</span> <span class="s1">'1900'</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-25"># cargar datos
-path = 'data/player_info.csv'
+<div class="clipboard-copy-txt" id="cell-23"># cargar datos
+path = 'https://raw.githubusercontent.com/fralfaro/MAT306/main/docs/lectures/data_manipulation/data/player_info.csv'
 df = pd.read_csv(path, sep="," ).dropna().drop_duplicates()
 df['Decade'] = df['year_start'].apply(lambda x: '2000' if x&gt;=2000 else '1900')
 df.head()</div>
@@ -5709,7 +5390,7 @@ df.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -5815,10 +5496,10 @@ df.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-26">
+<clipboard-copy for="cell-24">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -5833,7 +5514,7 @@ df.head()</div>
 <span class="n">pivot_df</span> <span class="o">=</span> <span class="n">agrupado</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">'Decade'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'position'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">'weight'</span><span class="p">)</span>
 <span class="n">pivot_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-26"># pivot: simple
+<div class="clipboard-copy-txt" id="cell-24"># pivot: simple
 agrupado = df.groupby(['Decade','position'])['weight'].mean().reset_index()
 pivot_df = agrupado.pivot(index='Decade', columns='position', values='weight')
 pivot_df.head(10)</div>
@@ -5846,7 +5527,7 @@ pivot_df.head(10)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -5920,10 +5601,10 @@ pivot_df.head(10)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-27">
+<clipboard-copy for="cell-25">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -5938,7 +5619,7 @@ pivot_df.head(10)</div>
 <span class="n">pivot_df</span> <span class="o">=</span> <span class="n">agrupado</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'Decade'</span><span class="p">,</span><span class="s1">'height'</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'position'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">'weight'</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">pivot_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-27"># pivot: multiple
+<div class="clipboard-copy-txt" id="cell-25"># pivot: multiple
 agrupado = df.groupby(['Decade','position','height'])['weight'].mean().fillna(0).astype(int).reset_index()
 pivot_df = agrupado.pivot(index=['Decade','height'], columns='position', values='weight').fillna(0)
 pivot_df.head(10)</div>
@@ -5951,7 +5632,7 @@ pivot_df.head(10)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -6108,10 +5789,10 @@ pivot_df.head(10)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-28">
+<clipboard-copy for="cell-26">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -6125,7 +5806,7 @@ pivot_df.head(10)</div>
 <span class="n">pivot_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">'Decade'</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'position'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">'weight'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">'mean'</span><span class="p">)</span>
 <span class="n">pivot_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-28"># pivot_table: simple
+<div class="clipboard-copy-txt" id="cell-26"># pivot_table: simple
 pivot_df = df.pivot_table(index='Decade', columns='position', values='weight', aggfunc='mean')
 pivot_df.head(10)</div>
 </div>
@@ -6137,7 +5818,7 @@ pivot_df.head(10)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -6211,10 +5892,10 @@ pivot_df.head(10)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-29">
+<clipboard-copy for="cell-27">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -6228,7 +5909,7 @@ pivot_df.head(10)</div>
 <span class="n">pivot_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">'Decade'</span><span class="p">,</span><span class="s1">'height'</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'position'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">'weight'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">'mean'</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">pivot_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-29"># pivot_table: multiple
+<div class="clipboard-copy-txt" id="cell-27"># pivot_table: multiple
 pivot_df = df.pivot_table(index=['Decade','height'], columns='position', values='weight', aggfunc='mean').fillna(0)
 pivot_df.head(10)</div>
 </div>
@@ -6240,7 +5921,7 @@ pivot_df.head(10)</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -6398,7 +6079,8 @@ pivot_df.head(10)</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="formato-wide-a-long">Formato wide a long<a class="anchor-link" href="#formato-wide-a-long">¶</a></h3><p>El despivotear una tabla corresponde al paso de una tabla desde el formato <strong>wide</strong> al formato <strong>long</strong>.</p>
+<h3 id="formato-wide-a-long">Formato wide a long<a class="anchor-link" href="#formato-wide-a-long">¶</a></h3><img align="center" alt="No description has been provided for this image" src="https://pandas.pydata.org/docs/_images/reshaping_melt.png" width="500"/>
+<p>El despivotear una tabla corresponde al paso de una tabla desde el formato <strong>wide</strong> al formato <strong>long</strong>.</p>
 <p>Se reconocen dos situaciones:</p>
 <ol>
 <li>El valor indicado para la columna es <strong>único</strong>, y sólo se requiere definir correctamente las columnas.</li>
@@ -6414,10 +6096,10 @@ pivot_df.head(10)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-30">
+<clipboard-copy for="cell-28">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -6428,11 +6110,35 @@ pivot_df.head(10)</div>
 </clipboard-copy>
 </div>
 <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">cols_index</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'name'</span><span class="p">,</span><span class="s1">'year_start'</span><span class="p">,</span><span class="s1">'year_end'</span><span class="p">]</span>
-<span class="n">pivot_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">cols_index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">'position'</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">'weight'</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">'mean'</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="n">pivot_df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
+        <span class="n">index</span><span class="o">=</span><span class="n">cols_index</span><span class="p">,</span>
+        <span class="n">columns</span><span class="o">=</span><span class="s1">'position'</span><span class="p">,</span>
+        <span class="n">values</span><span class="o">=</span><span class="s1">'weight'</span><span class="p">,</span>
+        <span class="n">aggfunc</span><span class="o">=</span><span class="s1">'mean'</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">pivot_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="n">pivot_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-30">cols_index = ['name','year_start','year_end']
-pivot_df = df.pivot_table(index=cols_index, columns='position', values='weight', aggfunc='mean').fillna(0).reset_index()
+<div class="clipboard-copy-txt" id="cell-28">cols_index = ['name','year_start','year_end']
+
+pivot_df = (
+    df.pivot_table(
+        index=cols_index,
+        columns='position',
+        values='weight',
+        aggfunc='mean'
+    )
+    .fillna(0)
+    .reset_index()
+)
+
+pivot_df.columns.name = None
 pivot_df.head()</div>
 </div>
 </div>
@@ -6443,7 +6149,7 @@ pivot_df.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -6462,7 +6168,7 @@ pivot_df.head()</div>
 <table border="1" class="dataframe">
 <thead>
 <tr style="text-align: right;">
-<th>position</th>
+<th></th>
 <th>name</th>
 <th>year_start</th>
 <th>year_end</th>
@@ -6555,10 +6261,10 @@ pivot_df.head()</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
-<clipboard-copy for="cell-31">
+<clipboard-copy for="cell-29">
 <div>
 <span class="notice" hidden="">Copied!</span>
 <svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
@@ -6568,29 +6274,21 @@ pivot_df.head()</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># aplicar comando melt</span>
-<span class="n">df_melt</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
-    <span class="n">df</span><span class="p">,</span> 
-    <span class="n">id_vars</span><span class="o">=</span><span class="n">cols_index</span><span class="p">,</span> 
-    <span class="n">var_name</span><span class="o">=</span><span class="s1">'Type'</span><span class="p">,</span>
-    <span class="n">value_name</span><span class="o">=</span><span class="s1">'Value'</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">melted_df</span> <span class="o">=</span> <span class="n">pivot_df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">'name'</span><span class="p">,</span> <span class="s1">'year_start'</span><span class="p">,</span> <span class="s1">'year_end'</span><span class="p">],</span>  <span class="c1"># columnas que se mantienen</span>
+    <span class="n">var_name</span><span class="o">=</span><span class="s1">'position'</span><span class="p">,</span>                         <span class="c1"># nombre de la columna nueva (antes columnas)</span>
+    <span class="n">value_name</span><span class="o">=</span><span class="s1">'weight'</span>                          <span class="c1"># nombre de los valores</span>
 <span class="p">)</span>
 
-
-<span class="n">df_melt</span> <span class="o">=</span> <span class="n">df_melt</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'Type'</span><span class="p">,</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">'Value'</span><span class="p">:</span><span class="s1">'position'</span><span class="p">})</span>
-<span class="n">df_melt</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">melted_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-31"># aplicar comando melt
-df_melt = pd.melt(
-    df, 
-    id_vars=cols_index, 
-    var_name='Type',
-    value_name='Value'
+<div class="clipboard-copy-txt" id="cell-29">melted_df = pivot_df.melt(
+    id_vars=['name', 'year_start', 'year_end'],  # columnas que se mantienen
+    var_name='position',                         # nombre de la columna nueva (antes columnas)
+    value_name='weight'                          # nombre de los valores
 )
 
-
-df_melt = df_melt.drop('Type',axis=1).rename(columns={'Value':'position'})
-df_melt.head()</div>
+melted_df.head()</div>
 </div>
 </div>
 </div>
@@ -6600,7 +6298,7 @@ df_melt.head()</div>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -6624,43 +6322,49 @@ df_melt.head()</div>
 <th>year_start</th>
 <th>year_end</th>
 <th>position</th>
+<th>weight</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <th>0</th>
-<td>Zaid Abdul-Aziz</td>
-<td>1969</td>
-<td>1978</td>
-<td>C-F</td>
+<td>A.C. Green</td>
+<td>1986</td>
+<td>2001</td>
+<td>C</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>1</th>
-<td>Kareem Abdul-Jabbar</td>
-<td>1970</td>
-<td>1989</td>
+<td>A.J. Bramlett</td>
+<td>2000</td>
+<td>2000</td>
 <td>C</td>
+<td>227.0</td>
 </tr>
 <tr>
 <th>2</th>
-<td>Mahmoud Abdul-Rauf</td>
+<td>A.J. English</td>
 <td>1991</td>
-<td>2001</td>
-<td>G</td>
+<td>1992</td>
+<td>C</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>3</th>
-<td>Tariq Abdul-Wahad</td>
-<td>1998</td>
+<td>A.J. Guyton</td>
+<td>2001</td>
 <td>2003</td>
-<td>F</td>
+<td>C</td>
+<td>0.0</td>
 </tr>
 <tr>
 <th>4</th>
-<td>Shareef Abdur-Rahim</td>
-<td>1997</td>
-<td>2008</td>
-<td>F</td>
+<td>A.J. Hammons</td>
+<td>2017</td>
+<td>2017</td>
+<td>C</td>
+<td>260.0</td>
 </tr>
 </tbody>
 </table>
