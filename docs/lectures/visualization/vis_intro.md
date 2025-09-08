@@ -116,6 +116,11 @@ Estos pilares son:
 
 * **Audiencia**: La audiencia se refiere a las personas que verán la visualización. La comprensión de la audiencia es esencial para determinar el nivel de detalle y complejidad adecuados para la visualización. La visualización debe ser accesible y comprensible para su audiencia objetivo.
 
+
+
+
+</iframe>
+
 > 🔑 **Nota**: Se recomienda ver el siguiente [video](https://www.youtube.com/watch?v=nC92wIzpQFE&ab_channel=StarsConf) para profundizar estos conceptos
 
 
@@ -138,7 +143,7 @@ y porque es posible indicar los porcentajes respectivos.
 
 
 
-<img src="https://www.portent.com/images/2020/03/Pie3.jpg" width = "500" align="center"/>
+<img src="https://graphworkflow.com/wp-content/uploads/2019/08/pie.png" width = "500" align="center"/>
 
 
 
