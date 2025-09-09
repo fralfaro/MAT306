@@ -57,7 +57,7 @@ Este curso proporciona las habilidades esenciales para desempeñarse como **Data
  Tipo   | Frecuencia  | Modalidad  | Entrega | Penalización|
 |---------------------|------------|------------|------------------|--------------------------|
 | **Laboratorios**   | Semanal    | Individual | Final de clases | nota 0 |
-| **Tareas**         | Mensual    | Individual | *T1*: 23-09-2025<br>*T2*: 11-11-2025 | -25 puntos   |
+| **Tareas**         | Mensual    | Individual | *T1*: 26-09-2025<br>*T2*: 11-11-2025 | -25 puntos   |
 | **Proyecto** | Semestral  | Grupal | 25-11-2025 | -25 puntos  |
 
 📌 **Nota Final:**
