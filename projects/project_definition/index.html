@@ -2164,45 +2164,37 @@
 <ol>
 <li>
 <p><strong>Definición del problema</strong></p>
-</li>
-<li>
-<p>Importancia del forecasting en el retail.</p>
-</li>
-<li>
-<p>Objetivo del análisis y justificación del enfoque adoptado.</p>
+<ul>
+<li>Importancia del forecasting en el retail.</li>
+<li>Objetivo del análisis y justificación del enfoque adoptado.</li>
+</ul>
 </li>
 <li>
 <p><strong>Exploración de datos</strong></p>
-</li>
-<li>
-<p>Revisión de los archivos <code>sales_train_validation.csv</code>, <code>calendar.csv</code>, <code>sell_prices.csv</code>.</p>
-</li>
-<li>
-<p>Comprensión del significado de <code>d_1</code> a <code>d_1913</code>, y variables clave (<code>item_id</code>, <code>store_id</code>, <code>state_id</code>, etc.).</p>
+<ul>
+<li>Revisión de los archivos <code>sales_train_validation.csv</code>, <code>calendar.csv</code>, <code>sell_prices.csv</code>.</li>
+<li>Comprensión del significado de <code>d_1</code> a <code>d_1913</code>, y variables clave (<code>item_id</code>, <code>store_id</code>, <code>state_id</code>, etc.).</li>
+</ul>
 </li>
 <li>
 <p><strong>Visualización</strong></p>
-</li>
-<li>
-<p>Tendencias de ventas por producto, tienda o estado.</p>
-</li>
+<ul>
+<li>Tendencias de ventas por producto, tienda o estado.</li>
 <li>Cambios de precio, patrones semanales, eventos especiales.</li>
-<li>
-<p>Exploración de estacionalidades y anomalías.</p>
+<li>Exploración de estacionalidades y anomalías.</li>
+</ul>
 </li>
 <li>
 <p><strong>Preprocesamiento</strong></p>
-</li>
-<li>
-<p>Transformación del dataset a formato largo (<code>melt</code>) para modelamiento.</p>
-</li>
+<ul>
+<li>Transformación del dataset a formato largo (<code>melt</code>) para modelamiento.</li>
 <li>Incorporación de variables exógenas (precios, eventos).</li>
-<li>
-<p>Agregación de features: medias móviles, lags, rolling statistics, etc.</p>
+<li>Agregación de features: medias móviles, lags, rolling statistics, etc.</li>
+</ul>
 </li>
 <li>
 <p><strong>Modelamiento</strong></p>
-</li>
+<ul>
 <li>
 <p>Se deben comparar al menos <strong>cuatro modelos</strong> diferentes:</p>
 <ul>
@@ -2210,26 +2202,28 @@
 <li>Modelos con regresores (LinearRegression, XGBoost, LightGBM)</li>
 <li>Modelos multivariados como <code>Facebook Prophet</code> o <code>VAR</code></li>
 <li>Opcional: redes neuronales (<code>LSTM</code>, <code>RNN</code>) si se justifican adecuadamente.</li>
-<li>Se recomienda usar validación tipo <strong>backtesting</strong> o <strong>walk-forward</strong>.</li>
+</ul>
+</li>
+<li>
+<p>Se recomienda usar validación tipo <strong>backtesting</strong> o <strong>walk-forward</strong>.</p>
+</li>
 </ul>
 </li>
 <li>
 <p><strong>Evaluación</strong></p>
-</li>
-<li>
-<p>Métricas requeridas: RMSE, MAE, RMSSE.</p>
-</li>
+<ul>
+<li>Métricas requeridas: RMSE, MAE, RMSSE.</li>
 <li>Visualización de predicciones vs. reales.</li>
-<li>
-<p>Análisis de errores y comparación entre modelos.</p>
+<li>Análisis de errores y comparación entre modelos.</li>
+</ul>
 </li>
 <li>
 <p><strong>Conclusiones</strong></p>
-</li>
-<li>
-<p>Reflexión sobre los resultados obtenidos.</p>
-</li>
+<ul>
+<li>Reflexión sobre los resultados obtenidos.</li>
 <li>Recomendaciones para implementación o mejoras futuras.</li>
+</ul>
+</li>
 </ol>
 <h3 id="presentacion-de-resultados">Presentación de Resultados</h3>
 <ul>
@@ -2242,7 +2236,7 @@
 <li><strong>Plazo</strong>: 25 de Noviembre del 2025.</li>
 <li>Esto corresponde a un desafío de Kaggle (<a href="https://www.kaggle.com/competitions/m5-forecasting-accuracy/">link</a>).</li>
 <li>El conjunto de datos puede descargarse desde la sección <a href="https://www.kaggle.com/competitions/m5-forecasting-accuracy/data">Data</a>.</li>
-<li>Como inspiración, pueden revisar notebooks destacados de Kaggle en la sección <a href="https://www.kaggle.com/competitions/m5-forecasting-accuracy/code">Code</a>.</li>
+<li>Como inspiración, pueden revisar notebooks de Kaggle en la sección <a href="https://www.kaggle.com/competitions/m5-forecasting-accuracy/code">Code</a>.</li>
 </ul>
 
 
