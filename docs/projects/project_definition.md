@@ -30,46 +30,46 @@ Debe incluir las siguientes secciones:
 
 1. **Definición del problema**
 
-   * Importancia del forecasting en el retail.
-   * Objetivo del análisis y justificación del enfoque adoptado.
+     * Importancia del forecasting en el retail.
+     * Objetivo del análisis y justificación del enfoque adoptado.
 
 2. **Exploración de datos**
 
-   * Revisión de los archivos `sales_train_validation.csv`, `calendar.csv`, `sell_prices.csv`.
-   * Comprensión del significado de `d_1` a `d_1913`, y variables clave (`item_id`, `store_id`, `state_id`, etc.).
+     * Revisión de los archivos `sales_train_validation.csv`, `calendar.csv`, `sell_prices.csv`.
+     * Comprensión del significado de `d_1` a `d_1913`, y variables clave (`item_id`, `store_id`, `state_id`, etc.).
 
 3. **Visualización**
 
-   * Tendencias de ventas por producto, tienda o estado.
-   * Cambios de precio, patrones semanales, eventos especiales.
-   * Exploración de estacionalidades y anomalías.
+     * Tendencias de ventas por producto, tienda o estado.
+     * Cambios de precio, patrones semanales, eventos especiales.
+     * Exploración de estacionalidades y anomalías.
 
 4. **Preprocesamiento**
 
-   * Transformación del dataset a formato largo (`melt`) para modelamiento.
-   * Incorporación de variables exógenas (precios, eventos).
-   * Agregación de features: medias móviles, lags, rolling statistics, etc.
+     * Transformación del dataset a formato largo (`melt`) para modelamiento.
+     * Incorporación de variables exógenas (precios, eventos).
+     * Agregación de features: medias móviles, lags, rolling statistics, etc.
 
 5. **Modelamiento**
 
-   * Se deben comparar al menos **cuatro modelos** diferentes:
-
-     * Modelos clásicos (ARIMA/SARIMA)
-     * Modelos con regresores (LinearRegression, XGBoost, LightGBM)
-     * Modelos multivariados como `Facebook Prophet` o `VAR`
-     * Opcional: redes neuronales (`LSTM`, `RNN`) si se justifican adecuadamente.
-   * Se recomienda usar validación tipo **backtesting** o **walk-forward**.
+     * Se deben comparar al menos **cuatro modelos** diferentes:
+         * Modelos clásicos (ARIMA/SARIMA)
+         * Modelos con regresores (LinearRegression, XGBoost, LightGBM)
+         * Modelos multivariados como `Facebook Prophet` o `VAR`
+         * Opcional: redes neuronales (`LSTM`, `RNN`) si se justifican adecuadamente.
+  
+     * Se recomienda usar validación tipo **backtesting** o **walk-forward**.
 
 6. **Evaluación**
 
-   * Métricas requeridas: RMSE, MAE, RMSSE.
-   * Visualización de predicciones vs. reales.
-   * Análisis de errores y comparación entre modelos.
+     * Métricas requeridas: RMSE, MAE, RMSSE.
+     * Visualización de predicciones vs. reales.
+     * Análisis de errores y comparación entre modelos.
 
 7. **Conclusiones**
 
-   * Reflexión sobre los resultados obtenidos.
-   * Recomendaciones para implementación o mejoras futuras.
+     * Reflexión sobre los resultados obtenidos.
+     * Recomendaciones para implementación o mejoras futuras.
 
 
 
@@ -86,5 +86,5 @@ Debe incluir las siguientes secciones:
 * **Plazo**: 25 de Noviembre del 2025.
 * Esto corresponde a un desafío de Kaggle ([link](https://www.kaggle.com/competitions/m5-forecasting-accuracy/)).
 * El conjunto de datos puede descargarse desde la sección [Data](https://www.kaggle.com/competitions/m5-forecasting-accuracy/data).
-* Como inspiración, pueden revisar notebooks destacados de Kaggle en la sección [Code](https://www.kaggle.com/competitions/m5-forecasting-accuracy/code).
+* Como inspiración, pueden revisar notebooks de Kaggle en la sección [Code](https://www.kaggle.com/competitions/m5-forecasting-accuracy/code).
 
