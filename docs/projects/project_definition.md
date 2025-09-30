@@ -143,7 +143,7 @@ Construir y justificar un **sistema de pronóstico de demanda diaria** para M5 (
 
 
 
-## Parte B — Formulación del Proyecto (30%)
+## Formulación del Proyecto (30%)
 
 #### Objetivos de esta parte
 
@@ -266,5 +266,5 @@ Estructurar el trabajo como **proyecto estadístico aplicado**, definiendo objet
 * Necesidad de impresión del póster (o solo digital).
 * Tasas de IVA/contingencia y política de redondeo.
 
-> **Tip**: vincula cada **ítem de costo** a un **hito/tarea** del Gantt para asegurar **coherencia tiempo–recurso**.
+> **Tip**: vincula cada **ítem de costo** a un **hito/tarea** de la carta Gantt.
 
