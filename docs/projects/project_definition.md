@@ -120,7 +120,7 @@ Construir y justificar un **sistema de pronóstico de demanda diaria** para M5 (
 
 #### Secciones mínimas del Beamer
 
-* **Duración**: 10–20 minutos.
+* **Duración**: 20–30 minutos.
 * **Contenido mínimo**: problema → datos/EDA → método/validación → resultados (tabla + gráficos) → interpretabilidad → limitaciones → próximos pasos.
 * **Formato**: PDF **Beamer** (subir al Portafolio).
 
